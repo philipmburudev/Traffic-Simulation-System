@@ -1,6 +1,9 @@
-
 import java.util.Scanner;
+
+
 public class TrafficLight{
+
+ 
    
 public enum trafficlight{
   RED,
@@ -18,10 +21,10 @@ public class Main {
     Scanner scan = new Scanner(System.in);
     String currentcolor = scan.nextLine();
     
-
-    if (currentcolor.compareTo("YELLOW")==0) color = trafficlight.YELLOW;
-    else if(currentcolor.compareTo("RED")==0) color = trafficlight.RED;
+    if(currentcolor.compareTo("RED")==0) color = trafficlight.RED;
+    else if (currentcolor.compareTo("YELLOW")==0) color = trafficlight.YELLOW;
     else if(currentcolor.compareTo("GREEN")==0) color = trafficlight.GREEN;
+        
     switch(color) {
       case RED:
         System.out.println("Lane 1");
