@@ -33,6 +33,7 @@ public class Main {
         System.out.println("Lane 3");
         break;
     }
+    scan.close();
   }
 }
 }
