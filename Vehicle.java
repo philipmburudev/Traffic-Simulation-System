@@ -2,6 +2,7 @@ class Vehicle{
     String purpose;
     int carID;
     String name;
+    int lane_to_go = -1;
 
     public String getPurpose() {
         return purpose;
@@ -27,10 +28,11 @@ class Vehicle{
         this.name = name;
     }
 
-    public Vehicle(String purpose, int carID, String name) {
+    public Vehicle(String purpose, int carID, String name, int lane_to_go) {
         this.purpose = purpose;
         this.carID = carID;
         this.name = name;
+        this.lane_to_go = lane_to_go;
     }
 
 }
