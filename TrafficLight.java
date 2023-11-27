@@ -11,7 +11,7 @@ public enum trafficlight{
 }
 
 
-//default constructor
+//default constructor to initialize the traffic light
 public TrafficLight() {
 }
 
