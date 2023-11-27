@@ -14,11 +14,11 @@ public class Main {
   public static void main(String[] args) {
     trafficlight color = trafficlight.YELLOW;
 
-    System.out.println("Type color");
+    System.out.println("Type coloor");
     Scanner scan = new Scanner(System.in);
     String currentcolor = scan.nextLine();
     
-    
+
     if (currentcolor.compareTo("YELLOW")==0) color = trafficlight.YELLOW;
     else if(currentcolor.compareTo("RED")==0) color = trafficlight.RED;
     else if(currentcolor.compareTo("GREEN")==0) color = trafficlight.GREEN;
