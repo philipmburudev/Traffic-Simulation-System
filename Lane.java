@@ -44,6 +44,7 @@ import java.util.LinkedList;
             inputlane.add(vehicle);
         }
 
+        // put vehicle in output lane
         public void putVehicleInOutputLane(Vehicle vehicle) {
             outputlane.add(vehicle);
         }
