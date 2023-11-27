@@ -1,7 +1,6 @@
 
 import java.util.Queue;
 import java.util.LinkedList;
-import java.util.Queue;
 
 
 
@@ -18,6 +17,26 @@ import java.util.Queue;
         this.laneNumber = laneNumber;
         this.laneName = laneName;
         this.trafficLight.setCurrentColor("RED");
+    }
+
+    // setter for lane number
+    public void setLaneNumber(int laneNumber) {
+        this.laneNumber = laneNumber;
+    }
+
+    // getter for lane number
+    public int getLaneNumber() {
+        return laneNumber;
+    }
+
+    // setter for lane name
+    public void setLaneName(String laneName) {
+        this.laneName = laneName;
+    }
+
+    // getter for lane name
+    public String getLaneName() {
+        return laneName;
     }
 
     // put a Vehicle in a lane
