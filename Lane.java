@@ -1,8 +1,8 @@
 
+// The `import` statements are used to import the `Queue` and `LinkedList` classes from the `java.util`
+// package.
 import java.util.Queue;
 import java.util.LinkedList;
-
-
 
     public class Lane {
         private Queue<Vehicle> inputlane = new LinkedList<>(); // cars going into the lane
@@ -13,6 +13,10 @@ import java.util.LinkedList;
         // traffic light obj
         TrafficLight trafficLight = new TrafficLight();
 
+       // The `public Lane(int laneNumber, String laneName)` is a constructor method for the `Lane`
+       // class. It takes two parameters, `laneNumber` and `laneName`, and initializes the `laneNumber`
+       // and `laneName` instance variables with the values passed as arguments. Additionally, it sets
+       // the current color of the `trafficLight` object to "RED".
         public Lane(int laneNumber, String laneName) {
             this.laneNumber = laneNumber;
             this.laneName = laneName;
@@ -53,10 +57,20 @@ import java.util.LinkedList;
             lane.outputlane.add(vehicle);
         }
 
+        /**
+         * The function returns the output lane of vehicles.
+         * 
+         * @return The method is returning a Queue of Vehicle objects.
+         */
         public Queue<Vehicle> getOutputLane() {
             return outputlane;
         }
 
+        /**
+         * The function returns the input lane of vehicles as a queue.
+         * 
+         * @return The method is returning a Queue of Vehicle objects.
+         */
         public Queue<Vehicle> getInputLane() {
             return inputlane;
         }

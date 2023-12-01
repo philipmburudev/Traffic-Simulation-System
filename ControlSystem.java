@@ -107,18 +107,23 @@ public class ControlSystem {
          * lane3 is south
          * lane4 is west
          */
+        // Set initial traffic light color to GREEN for lane1
         lane1.trafficLight.setCurrentColor("GREEN");
+        // Continue traffic simulation until all output lanes are empty
         while (!lane1.getOutputLane().isEmpty() || 
                !lane2.getOutputLane().isEmpty() ||
                !lane3.getOutputLane().isEmpty() ||
                !lane4.getOutputLane().isEmpty()) {
-            // Check the traffic light
+
+            // Check the current color of each traffic light
             System.out.println("Traffic light 1: " + lane1.trafficLight.getCurrentColor());
             System.out.println("Traffic light 2: " + lane2.trafficLight.getCurrentColor());
             System.out.println("Traffic light 3: " + lane3.trafficLight.getCurrentColor());
             System.out.println("Traffic light 4: " + lane4.trafficLight.getCurrentColor());
+
+            // Move vehicles based on the current traffic light color
             if (lane1.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
-                // Move vehicles from lane1 to lane2
+                // Move vehicles from lane1 to other lanes
                 ControlSystem.moveVehiclesOut(lanes, lane1);
                 lane1.showAllVehicles();
                 // Generate vehicles for lane1
@@ -130,62 +135,70 @@ public class ControlSystem {
                 // Generate vehicles for lane2
                 // ControlSystem.generateVehicle(lane2);
             } else if (lane3.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
-                // Move vehicles from lane3 to lane4
+                // Move vehicles from lane3 to other lanes
                 ControlSystem.moveVehiclesOut(lanes, lane3);
                 lane3.showAllVehicles();
                 // Generate vehicles for lane3
                 // ControlSystem.generateVehicle(lane3);
             } else if (lane4.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
-                // Move vehicles from lane4 to lane1
+                // Move vehicles from lane4 to other lanes
                 ControlSystem.moveVehiclesOut(lanes, lane4);
                 lane4.showAllVehicles();
-                // Generate vehicles for lane4
+                // Generate vehicles for other lanes
                 // ControlSystem.generateVehicle(lane4);
             }
 
-            // Change the traffic light
-            if (lane1.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
+            // Change the traffic light colors based on the specified sequence
+            //  if trffic light was green, set to  yellow and the rest to red
+             if (lane1.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
                 lane1.trafficLight.setCurrentColor("YELLOW");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("RED");
 
+            //  if trffic light was yellow, set to next light to Green and the rest to red
             } else if (lane1.trafficLight.getCurrentColor() == TrafficLight.trafficlight.YELLOW) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("GREEN");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("RED");
 
+            //  if trffic light was green, set to  yellow and the rest to red
             } else if (lane2.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("YELLOW");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("RED");
 
+                //  if trffic light was yellow, set to next light to Green and the rest to red
             } else if (lane2.trafficLight.getCurrentColor() == TrafficLight.trafficlight.YELLOW) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("GREEN");
                 lane4.trafficLight.setCurrentColor("RED");
-
+                
+            //  if trffic light was green, set to  yellow and the rest to red
             } else if (lane3.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("YELLOW");
                 lane4.trafficLight.setCurrentColor("RED");
 
+                //  if trffic light was yellow, set to next light to Green and the rest to red
             } else if (lane3.trafficLight.getCurrentColor() == TrafficLight.trafficlight.YELLOW) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("GREEN");
 
+                //  if trffic light was green, set to  yellow and the rest to red
             } else if (lane4.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("YELLOW");
 
+                //  if trffic light was yellow, set to next light to Green and the rest to red
             } else if (lane4.trafficLight.getCurrentColor() == TrafficLight.trafficlight.YELLOW) {
                 lane1.trafficLight.setCurrentColor("GREEN");
                 lane2.trafficLight.setCurrentColor("RED");
@@ -193,6 +206,7 @@ public class ControlSystem {
                 lane4.trafficLight.setCurrentColor("RED");
 
             } else {
+                // Default case, setting all traffic lights to RED
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("RED");
