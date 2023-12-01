@@ -15,7 +15,8 @@ public class ControlSystem {
         // Move emergency vehicles to the target lane
         while (!currentOutputLane.isEmpty()) {
             tempVehicle = currentOutputLane.peek();
-            if (tempVehicle.getVehicleType().equals("emergency")) {
+            if (tempVehicle.getVehicleType().compareTo("emergency") == 0) {
+                System.out.println("Emergency vehicle found");
                 currentOutputLane.remove(); // Remove from output lane
                 targetInputLane = lanes[tempVehicle.getLaneToGo() - 1]; // Get target lane
                 targetInputLane.getInputLane().add(tempVehicle); // Add to target lane input
