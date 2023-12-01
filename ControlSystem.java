@@ -34,14 +34,25 @@ public class ControlSystem {
     }
 
     public static void generateVehicle(Lane lane) {
-        int[] directions = {1, 2, 3, 4};
+        int[] directions1 = {2, 3, 4};
+        int[] directions2 = {1, 3, 4};
+        int[] directions3 = {1, 2, 4};
+        int[] directions4 = {1, 2, 3};
+
+        int[][] directions = {directions1, directions2, directions3, directions4};
+        // Generate a random direction (e.g., 1, 2, 3, 4)
+        int laneMumber = lane.getLaneNumber();
+
+        directions2 = directions[laneMumber - 1];
+        
+
         long arrivalTime = System.currentTimeMillis();
 
         // generating 1-5 vehicles
         int numOfVehicles = new Random().nextInt(1,6);
         for (int i=0; i<numOfVehicles; i++) {
-            // Generate a random direction (e.g., 1, 2, 3, 4
-            int direction = directions[new Random().nextInt(directions.length)];
+            int direction = directions2[new Random().nextInt(directions2.length)];
+            
             // Generate emergency vehicles with a certain probability (e.g., 10%)
             boolean isEmergency = new Random().nextInt(10) == 0;
 
@@ -109,41 +120,49 @@ public class ControlSystem {
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("RED");
+
             } else if (lane1.trafficLight.getCurrentColor() == TrafficLight.trafficlight.YELLOW) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("GREEN");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("RED");
+
             } else if (lane2.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("YELLOW");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("RED");
+
             } else if (lane2.trafficLight.getCurrentColor() == TrafficLight.trafficlight.YELLOW) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("GREEN");
                 lane4.trafficLight.setCurrentColor("RED");
+
             } else if (lane3.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("YELLOW");
                 lane4.trafficLight.setCurrentColor("RED");
+
             } else if (lane3.trafficLight.getCurrentColor() == TrafficLight.trafficlight.YELLOW) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("GREEN");
+
             } else if (lane4.trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("YELLOW");
+
             } else if (lane4.trafficLight.getCurrentColor() == TrafficLight.trafficlight.YELLOW) {
                 lane1.trafficLight.setCurrentColor("GREEN");
                 lane2.trafficLight.setCurrentColor("RED");
                 lane3.trafficLight.setCurrentColor("RED");
                 lane4.trafficLight.setCurrentColor("RED");
+
             } else {
                 lane1.trafficLight.setCurrentColor("RED");
                 lane2.trafficLight.setCurrentColor("RED");
