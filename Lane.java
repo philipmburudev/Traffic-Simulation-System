@@ -40,31 +40,24 @@ import java.util.LinkedList;
         }
 
         // put a Vehicle in a lane
-        public void putVehicle(Vehicle vehicle) {
+        public void putVehicleIn(Vehicle vehicle) {
             inputlane.add(vehicle);
         }
 
+        public Vehicle moveVehicleOut() {
+            return outputlane.remove();
+        }
+
         // put vehicle in output lane
-        public void putVehicleInOutputLane(Vehicle vehicle) {
-            outputlane.add(vehicle);
+        public static void putVehicleInOutputLane(Vehicle vehicle, Lane lane) {
+            lane.outputlane.add(vehicle);
         }
 
-        public void moveVehiclesOut(Lane[] lanes) {
-            Vehicle tempVehicle = null;
-            while (!outputlane.isEmpty()) {
-                if (outputlane.peek().getVehicleType().compareTo("emergency") == 0) {
-                    outputlane.add(inputlane.remove());
-                } else if (outputlane.peek().getVehicleType().compareTo("normal") == 0) {
-                    outputlane.add(inputlane.remove());
-                }
-            }
-        }
-
-        public Queue<Vehicle> getVehiclesFromOutputLane() {
+        public Queue<Vehicle> getOutputLane() {
             return outputlane;
         }
 
-        public Queue<Vehicle> getVehiclesFromInputLane() {
+        public Queue<Vehicle> getInputLane() {
             return inputlane;
         }
     }
