@@ -56,8 +56,4 @@ import java.util.LinkedList;
         public Queue<Vehicle> getVehiclesFromInputLane() {
             return inputlane;
         }
-
-    
-
-    
-}
+    }
