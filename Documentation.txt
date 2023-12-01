@@ -1,25 +1,28 @@
 README file that includes instructions on how to use the project.
 
+## Data structures we used:
+1. Queues
+2. Hashmaps/HashTables
+3. LinkedList
 
-Our project is a traffic light simulator system that controls traffic at an intersection of four streets. Each street has two lanes, one for cars going aways from the intersection and one for cars coming towards the intersection. As the cars approach the intersection from either of the streets, they meet a traffic light which indicates if the cars should stop or move. 
 
-Our code simulates this scenario where it automatically puts cars in each of the four streets and moves them from one street to another based on the traffic light. Moreover, the code detects if a car is an emergency one or not so that it can be given a priority. For example an ambulance car which is an emergency car would be moved from street one or lane one to another before any other car. 
-
-In Data structure language we used queues to store the vehicles or cars and classes to represent the lanes. The lane class is where the cars are stored based on whether they are going out of the lane or into the new lane. At the start the cars in a given lane are arranged randomly as as they move from one lane to another, they are arranged in order of priority if they are an emergency car or not.  
 
 Why we choose the different data structures:
 
-Queue - we chose queues to represent the lanes. Each lane is has two 
-Arrays:
-In 
-Purpose: Arrays are used to represent the lanes in the traffic control system.
-Reasoning: Arrays provide constant-time access to elements based on their index, making them suitable for representing lanes, which are indexed based on their position in the system. Arrays also allow for easy iteration over lanes.
-Queue (LinkedList):
-Purpose: Queues are used to model the output lanes of each lane, representing the vehicles waiting to move to the next lane.
-Reasoning: Queues are suitable for modeling the first-in, first-out (FIFO) behavior of vehicles in the output lanes. When a vehicle arrives, it is added to the end of the queue, and when it's time to move, the vehicle is removed from the front. LinkedList is chosen because it efficiently supports insertion and removal from both ends of the queue.
-HashMap (Hashtable):
-Purpose: HashTables are not explicitly used in the provided code, but they can be beneficial for certain scenarios, especially when dealing with large datasets or when quick lookups are required.
-Reasoning: HashTables provide constant-time average-case complexity for search, insertion, and deletion operations. They could be useful if you need to quickly look up information about specific vehicles or perform other operations that benefit from fast key-based access.
-Objects (Vehicle, Lane, TrafficLight):
-Purpose: Custom objects are used to model the entities in the traffic control system, such as vehicles, lanes, and traffic lights.
-Reasoning: Objects help organize and encapsulate related data and behavior. They allow you to represent the properties and actions of vehicles, lanes, and traffic lights in a structured and modular way, making the code more readable and maintainable
+Queue - we chose queues to represent the lanes. Each lane is has two ways. One for vehicles coming into the intersection
+and one for cars going out of the intersection.
+We choose queues to model the first-in, first-out behavior of vehicles in the output lanes. 
+When a vehicle arrives, it is added to the end of the queue, and when it's time to move, the vehicle is removed from the front. 
+
+
+LinkedList - We used LinkedList to store the vehicles. The first LinkedList stored vehicles going into another lane and the
+other vehicles coming into the lane. We choose LinkedList because it efficiently supports insertion and removal from both 
+ends of the queue.
+
+
+HashMap (Hashtable) - We used the hashtabel to store the statistics of the cars. For example, the number of normal and emergency
+cars that passed as well as the average waiting time at the traffic light.
+HashTables provide constant-time average-case complexity for search, insertion, and deletion operations. 
+They could be useful if you need to quickly look up information about specific vehicles or perform other operations that 
+benefit from fast key-based access.
+
