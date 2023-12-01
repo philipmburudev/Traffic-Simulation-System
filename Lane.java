@@ -49,6 +49,21 @@ import java.util.LinkedList;
             outputlane.add(vehicle);
         }
 
+        public void moveVehiclesOut(Lane[] lanes) {
+            Vehicle tempVehicle = null;
+            while (!outputlane.isEmpty()) {
+                if (outputlane.peek().getVehicleType().compareTo("emergency") == 0) {
+                    outputlane.add(inputlane.remove());
+                } else if (outputlane.peek().getVehicleType().compareTo("normal") == 0) {
+                    if (trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
+                        outputlane.add(inputlane.remove());
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+
         public Queue<Vehicle> getVehiclesFromOutputLane() {
             return outputlane;
         }

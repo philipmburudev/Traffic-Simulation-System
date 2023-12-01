@@ -35,4 +35,8 @@ class Vehicle{
         this.lane_to_go = lane_to_go;
     }
 
+    public String getVehicleType() {
+        return purpose;
+    }
+
 }
