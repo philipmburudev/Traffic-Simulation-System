@@ -11,7 +11,7 @@ import java.util.LinkedList;
         private int laneNumber;
         private String laneName;
         // traffic light obj
-        private TrafficLight trafficLight = new TrafficLight();
+        TrafficLight trafficLight = new TrafficLight();
 
         public Lane(int laneNumber, String laneName) {
             this.laneNumber = laneNumber;
