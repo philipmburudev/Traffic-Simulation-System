@@ -8,28 +8,27 @@ public class ControlSystem {
      * @param currentLane
      */
     public static void moveVehiclesOut(Lane[] lanes, Lane currentLane) {
-        Vehicle tempVehicle = null;
-        Lane targetInputLane = null;
         Queue<Vehicle> currentOutputLane = currentLane.getOutputLane();
-        int count = 1;
-        // Move emergency vehicles to the target lane
-        while (!currentOutputLane.isEmpty()) {
-            tempVehicle = currentOutputLane.peek();
-            if (tempVehicle.getVehicleType().compareTo("emergency") == 0) {
-                System.out.println("Emergency vehicle found");
-                currentOutputLane.remove(); // Remove from output lane
-                targetInputLane = lanes[tempVehicle.getLaneToGo() - 1]; // Get target lane
-                targetInputLane.getInputLane().add(tempVehicle); // Add to target lane input
-            } else if (count == currentOutputLane.size()) {
-                break; // Exit loop if a non-emergency vehicle is encountered
+
+        int size = currentOutputLane.size();
+
+        for (int i = 0; i < size; i++) {
+            Vehicle tempVehicle = currentOutputLane.poll();
+
+            if (tempVehicle.getVehicleType().equals("emergency")) {
+                System.out.println("Emergency vehicle found " + tempVehicle.getCarID());
+                Lane targetInputLane = lanes[tempVehicle.getLaneToGo() - 1];
+                targetInputLane.getInputLane().add(tempVehicle);
+            } else {
+                currentOutputLane.add(tempVehicle);
             }
-            count++;
         }
+
         // Move the remaining vehicles to the target lane
         while (!currentOutputLane.isEmpty()) {
-            tempVehicle = currentOutputLane.remove(); // Remove from output lane
-            targetInputLane = lanes[tempVehicle.getLaneToGo() - 1]; // Get target lane
-            targetInputLane.getInputLane().add(tempVehicle); // Add to target lane input
+            Vehicle tempVehicle = currentOutputLane.poll();
+            Lane targetInputLane = lanes[tempVehicle.getLaneToGo() - 1];
+            targetInputLane.getInputLane().add(tempVehicle);
         }
     }
 
