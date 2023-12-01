@@ -39,4 +39,8 @@ class Vehicle{
         return purpose;
     }
 
+    public int getLaneToGo() {
+        return 0;
+    }
+
 }

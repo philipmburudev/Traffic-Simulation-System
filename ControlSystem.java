@@ -2,19 +2,32 @@ import java.util.Queue;
 
 public class ControlSystem {
 
+    /**
+     * This method is used to move vehicles from outputlane of one Lane to inputlane of another Lane
+     * @param lanes
+     * @param currentLane
+     */
     public static void moveVehiclesOut(Lane[] lanes, Lane currentLane) {
         Vehicle tempVehicle = null;
+        Lane targetInputLane = null;
         Queue<Vehicle> currentOutputLane = currentLane.getOutputLane();
         Queue<Vehicle> currentInputLane = currentLane.getInputLane();
+        // Move emergency vehicles to the target lane
         while (!currentOutputLane.isEmpty()) {
-            if (currentOutputLane.peek().getVehicleType().compareTo("emergency") == 0) {
-                tempVehicle = currentOutputLane.remove();
-                currentInputLane.add(tempVehicle);
-
-            } else if (currentOutputLane.peek().getVehicleType().compareTo("emergency") == 0) {
-                tempVehicle = currentOutputLane.remove();
-                currentInputLane.add(tempVehicle);
+            tempVehicle = currentOutputLane.peek();
+            if (tempVehicle.getVehicleType().equals("emergency")) {
+                currentOutputLane.remove(); // Remove from output lane
+                targetInputLane = lanes[tempVehicle.getLaneToGo() - 1]; // Get target lane
+                targetInputLane.getInputLane().add(tempVehicle); // Add to target lane input
+            } else {
+                break; // Exit loop if a non-emergency vehicle is encountered
             }
+        }
+        // Move the remaining vehicles to the target lane
+        while (!currentOutputLane.isEmpty()) {
+            tempVehicle = currentOutputLane.remove(); // Remove from output lane
+            targetInputLane = lanes[tempVehicle.getLaneToGo() - 1]; // Get target lane
+            targetInputLane.getInputLane().add(tempVehicle); // Add to target lane input
         }
     }
 
