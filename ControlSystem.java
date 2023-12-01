@@ -1,7 +1,25 @@
+import java.util.HashMap;
 import java.util.Queue;
 import java.util.Random;
 
 public class ControlSystem {
+
+    static int numOfVehicles = 0;
+    static HashMap<String, Integer> statistics = new HashMap<String, Integer>();
+    public static void setStatistics() {
+        statistics = new HashMap<>();
+        statistics.put("emergency", 0);
+        statistics.put("normal", 0);
+        statistics.put("totalWaitingTime", 0);
+    }
+
+    public static void printStatistics() {
+        System.out.println("Statistics:");
+        System.out.println("Normal Vehicles Passed: " + statistics.get("normal"));
+        System.out.println("Emergency Vehicles Passed: " + statistics.get("emergency"));
+        System.out.println("Total Vehicles Passed: " + (statistics.get("emergency")+statistics.get("normal")));
+        System.out.println("Average Wait Time: " + (statistics.get("totalWaitingTime") / (statistics.get("emergency")+statistics.get("normal"))) + "ms");
+    }
 
     /**
      * This method is used to move vehicles from outputlane of one Lane to inputlane of another Lane
@@ -20,6 +38,8 @@ public class ControlSystem {
                 System.out.println("Emergency vehicle found " + tempVehicle.getCarID());
                 Lane targetInputLane = lanes[tempVehicle.getLaneToGo() - 1];
                 targetInputLane.getInputLane().add(tempVehicle);
+                statistics.put("emergency", statistics.get("emergency") + 1);
+                statistics.put("totalWaitingTime", statistics.get("totalWaitingTime") + (int)(System.currentTimeMillis() - tempVehicle.arrivalTime));
             } else {
                 currentOutputLane.add(tempVehicle);
             }
@@ -30,6 +50,8 @@ public class ControlSystem {
             Vehicle tempVehicle = currentOutputLane.poll();
             Lane targetInputLane = lanes[tempVehicle.getLaneToGo() - 1];
             targetInputLane.getInputLane().add(tempVehicle);
+            statistics.put("normal", statistics.get("normal") + 1);
+            statistics.put("totalWaitingTime", statistics.get("totalWaitingTime") + (int)(System.currentTimeMillis() - tempVehicle.arrivalTime));
         }
     }
 
@@ -43,7 +65,6 @@ public class ControlSystem {
         // Generate a random direction (e.g., 1, 2, 3, 4)
         int laneMumber = lane.getLaneNumber();
         directions2 = directions[laneMumber - 1];
-        long arrivalTime = System.currentTimeMillis();
 
         // generating 1-5 vehicles
         int numOfVehicles = new Random().nextInt(1,6);
@@ -61,6 +82,8 @@ public class ControlSystem {
     }
 
     public static void main(String[] args) {
+        ControlSystem.setStatistics();
+
         // System.out.println("Type traffic color");
         Lane lane1 = new Lane(1, "lane1");
         Lane lane2 = new Lane(2, "lane2");
@@ -176,5 +199,8 @@ public class ControlSystem {
                 lane4.trafficLight.setCurrentColor("RED");
             }
         }
+
+        // Print statistics
+        ControlSystem.printStatistics();
     }
 }

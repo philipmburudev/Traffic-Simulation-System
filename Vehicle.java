@@ -4,6 +4,7 @@ class Vehicle{
     String name;
     int lane_to_go = -1;
     static int id = 1;
+    long arrivalTime;
 
     public String getPurpose() {
         return purpose;
@@ -34,6 +35,7 @@ class Vehicle{
         this.carID = carID;
         this.name = name;
         this.lane_to_go = lane_to_go;
+        this.arrivalTime = System.currentTimeMillis();
         Vehicle.id++;
     }
 
