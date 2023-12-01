@@ -10,7 +10,7 @@ public class ControlSystem {
             if (currentOutputLane.peek().getVehicleType().compareTo("emergency") == 0) {
                 tempVehicle = currentOutputLane.remove();
                 currentInputLane.add(tempVehicle);
-                
+
             } else if (currentOutputLane.peek().getVehicleType().compareTo("emergency") == 0) {
                 tempVehicle = currentOutputLane.remove();
                 currentInputLane.add(tempVehicle);
