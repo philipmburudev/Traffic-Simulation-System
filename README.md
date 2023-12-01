@@ -1,10 +1,6 @@
 # Traffic-Simulation-System
 ## Overview
-This project is a simplified simulation of a traffic light system designed to mimic the behavior of a traffic light controlled intesection of 4 road (each road with two cardinalities). It uses a command-line interface to provide details such as the summary of movement as well as GUI to display the illustrated flow.
 
-## Features
-Queues -  these hold the density of cars in the different roads
-Lanes - these are classes that represent the 4 
-GUI - this simulates the flow to give a visual representation of movement of cars
+Our project is a traffic light simulator system that controls traffic at an intersection of four streets. Each street has two lanes, one for cars going aways from the intersection and one for cars coming towards the intersection. As the cars approach the intersection from either of the streets, they meet a traffic light which indicates if the cars should stop or move. 
 
-## This is it
+Our code simulates this scenario where it automatically puts cars in each of the four streets and moves them from one street to another based on the traffic light. Moreover, the code detects if a car is an emergency one or not so that it can be given a priority. For example an ambulance car which is an emergency car would be moved from street one or lane one to another before any other car.
