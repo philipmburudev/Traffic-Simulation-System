@@ -1,15 +1,22 @@
+import java.util.Queue;
+
 public class ControlSystem {
 
-    // public void moveVehiclesOut(Lane[] lanes) {
-    //     Vehicle tempVehicle = null;
-    //     while (!outputlane.isEmpty()) {
-    //         if (outputlane.peek().getVehicleType().compareTo("emergency") == 0) {
-    //             outputlane.add(inputlane.remove());
-    //         } else if (outputlane.peek().getVehicleType().compareTo("normal") == 0) {
-    //             outputlane.add(inputlane.remove());
-    //         }
-    //     }
-    // }
+    public static void moveVehiclesOut(Lane[] lanes, Lane currentLane) {
+        Vehicle tempVehicle = null;
+        Queue<Vehicle> currentOutputLane = currentLane.getOutputLane();
+        Queue<Vehicle> currentInputLane = currentLane.getInputLane();
+        while (!currentOutputLane.isEmpty()) {
+            if (currentOutputLane.peek().getVehicleType().compareTo("emergency") == 0) {
+                tempVehicle = currentOutputLane.remove();
+                currentInputLane.add(tempVehicle);
+                
+            } else if (currentOutputLane.peek().getVehicleType().compareTo("emergency") == 0) {
+                tempVehicle = currentOutputLane.remove();
+                currentInputLane.add(tempVehicle);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         // System.out.println("Type traffic color");
