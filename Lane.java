@@ -55,11 +55,7 @@ import java.util.LinkedList;
                 if (outputlane.peek().getVehicleType().compareTo("emergency") == 0) {
                     outputlane.add(inputlane.remove());
                 } else if (outputlane.peek().getVehicleType().compareTo("normal") == 0) {
-                    if (trafficLight.getCurrentColor() == TrafficLight.trafficlight.GREEN) {
-                        outputlane.add(inputlane.remove());
-                    } else {
-                        break;
-                    }
+                    outputlane.add(inputlane.remove());
                 }
             }
         }

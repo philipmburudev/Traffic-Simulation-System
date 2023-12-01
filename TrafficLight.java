@@ -27,13 +27,5 @@ public trafficlight getCurrentColor() {
   return currentColor;
 }
 
-
-
-public class Main {
-
-  public static void main(String[] args) {
-    
-  }
-}
 }
 
