@@ -40,7 +40,7 @@ class Vehicle{
     }
 
     public int getLaneToGo() {
-        return 0;
+        return lane_to_go;
     }
 
 }
