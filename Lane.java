@@ -5,8 +5,8 @@ import java.util.LinkedList;
 
 
     public class Lane {
-        private Queue<Vehicle> inputlane = new LinkedList<>();
-        private Queue<Vehicle> outputlane = new LinkedList<>();
+        private Queue<Vehicle> inputlane = new LinkedList<>(); // cars going into the lane
+        private Queue<Vehicle> outputlane = new LinkedList<>(); // cars going out of the lane
         //lane number and name
         private int laneNumber;
         private String laneName;

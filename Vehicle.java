@@ -3,6 +3,7 @@ class Vehicle{
     int carID;
     String name;
     int lane_to_go = -1;
+    static int id = 1;
 
     public String getPurpose() {
         return purpose;
@@ -33,6 +34,7 @@ class Vehicle{
         this.carID = carID;
         this.name = name;
         this.lane_to_go = lane_to_go;
+        Vehicle.id++;
     }
 
     public String getVehicleType() {
